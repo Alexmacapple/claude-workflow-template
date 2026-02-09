@@ -1,0 +1,97 @@
+MEMOIRE HIERARCHIQUE:
+=====================
+1. Memoire personnelle : ~/.claude/CLAUDE.MD              [Conventions universelles - TOUS workspaces]
+2. Memoire workspace   : ./CLAUDE.MD                      [Workflow specifique - CE workspace]
+3. Memoire projet      : ./active/projet/CLAUDE.MD        [Specs projet]
+4. Memoire locale      : ./active/projet/claude.local.md  [Secrets, notes perso - GITIGNORED]
+
+./
+├── README.MD                           [Presentation du template]
+├── CLAUDE.MD                           [Memoire workspace - A personnaliser]
+├── CHANGELOG.MD                        [Journal des modifications]
+├── FAQ.MD                              [Questions frequentes]
+├── GLOSSAIRE.MD                        [Definitions des termes cles]
+├── GUIDELINES-CLAUDE-CODE.MD           [Reference technique Claude Code]
+├── MON-PREMIER-PROJET-HOW-TO.MD        [Guide pratique complet]
+├── .gitignore                          [Gitignore global]
+├── STRUCTURE.txt                       [Ce fichier]
+├── setup.sh                            [Installation interactive apres clone]
+├── setup-aliases.sh                    [Alias zsh parametrables]
+├── check-markdown-rules.sh             [Verification conformite Markdown]
+│
+├── .git-hooks/                         [Templates hooks Git (versionnes)]
+│   ├── pre-commit                      [Verification Markdown avant commit]
+│   └── README.md                       [Documentation des hooks]
+│
+├── .claude/                            [Configuration Claude Code]
+│   ├── commands/                       [Slash commands personnalises]
+│   │   └── init.MD                     [/init - Initialiser un projet]
+│   │
+│   ├── skills/                         [Workflows orchestrateurs]
+│   │   └── verifier-regles-md/         [Skill audit Markdown]
+│   │       └── SKILL.md
+│   │
+│   ├── agents/                         [Agents specialises (a creer)]
+│   │
+│   ├── rules/                          [Regles par domaine]
+│   │   ├── markdown-rules.md           [Conventions Markdown]
+│   │   ├── git-rules.md                [Conventions Git]
+│   │   ├── naming-rules.md             [Conventions de nommage]
+│   │   ├── typescript-rules.md         [Conventions TypeScript]
+│   │   ├── api-rules.md                [Conventions API REST]
+│   │   ├── frontend-rules.md           [Conventions frontend]
+│   │   ├── security-rules.md           [Conventions securite]
+│   │   └── test-rules.md               [Conventions tests]
+│   │
+│   └── claude.local.template.md        [Template memoire locale pour projets]
+│
+├── docs-public/                        [Documentation publique]
+│   ├── README.MD                       [Index des publications]
+│   ├── articles/                       [Articles techniques]
+│   ├── tutoriels/                      [Tutoriels pratiques]
+│   ├── guides/                         [Guides de reference]
+│   │   ├── git-hooks-guide.md          [Documentation hooks Git]
+│   │   ├── creer-un-agent.md           [Guide creation d'agents]
+│   │   ├── creer-un-skill.md           [Guide creation de skills]
+│   │   ├── creer-une-rule.md           [Guide creation de rules]
+│   │   ├── creer-une-commande-slash.md [Guide creation de commandes slash]
+│   │   ├── hooks-examples.md           [Exemples de hooks]
+│   │   ├── troubleshooting.md          [Guide de depannage]
+│   │   └── premier-projet/             [Guide premier projet (modulaire)]
+│   ├── presentations/                  [Slides et talks]
+│   └── portfolio/                      [Projets a presenter]
+│
+├── active/                             [Projets en cours]
+│   └── README.MD                       [Guide d'utilisation]
+│
+├── templates/                          [Templates reutilisables]
+│   ├── README.MD                       [Catalogue des templates]
+│   ├── ADR-template.md                 [Template Architecture Decision Record]
+│   ├── projet-api/                     [Template projet API]
+│   ├── projet-cli/                     [Template projet CLI]
+│   ├── projet-frontend/                [Template projet frontend]
+│   └── projet-fullstack/               [Template projet fullstack]
+│
+└── archive/                            [Projets termines]
+    └── README.MD                       [Guide d'archivage]
+
+COMMANDES DISPONIBLES:
+======================
+/init <nom-projet>          Creer un nouveau projet avec structure complete
+/verifier-regles-md         Verifier conformite Markdown (audit complet)
+
+SCRIPTS DISPONIBLES:
+====================
+./check-markdown-rules.sh   Verification rapide Markdown (CLI)
+./setup.sh                  Installation interactive (liens symboliques + hooks + alias)
+
+HOOKS GIT:
+==========
+pre-commit                  Bloque commits avec violations Markdown
+
+PROCHAINES ETAPES:
+==================
+1. Personnaliser CLAUDE.MD avec vos conventions
+2. Creer votre premier projet : /init mon-premier-projet
+3. Lire le guide pratique : cat MON-PREMIER-PROJET-HOW-TO.MD
+4. Explorer les README.MD de chaque dossier

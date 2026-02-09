@@ -1,0 +1,30 @@
+# Mémoire locale
+claude.local.md
+
+# Dependencies
+node_modules/
+
+# Production
+dist/
+
+# Env
+.env
+.env*.local
+
+# Testing
+coverage/
+
+# Database
+prisma/dev.db
+prisma/dev.db-journal
+
+# Logs
+*.log
+
+# Misc
+.DS_Store
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json

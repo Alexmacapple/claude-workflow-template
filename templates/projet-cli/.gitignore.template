@@ -1,0 +1,28 @@
+# Mémoire locale
+claude.local.md
+
+# Dependencies
+node_modules/
+
+# Production
+dist/
+bin/*.js
+!bin/cli.js
+
+# Env
+.env
+.env*.local
+
+# Testing
+coverage/
+
+# Logs
+*.log
+
+# Misc
+.DS_Store
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json

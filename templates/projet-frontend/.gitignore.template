@@ -1,0 +1,30 @@
+# Mémoire locale
+claude.local.md
+
+# Dependencies
+node_modules/
+
+# Production
+dist/
+build/
+
+# Env
+.env
+.env*.local
+
+# Testing
+coverage/
+/test-results/
+/playwright-report/
+
+# Misc
+.DS_Store
+*.log
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Vercel
+.vercel

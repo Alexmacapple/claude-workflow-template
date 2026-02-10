@@ -35,9 +35,15 @@ Orchestrer efficacement les projets avec Claude Code en appliquant le principe d
 
 ## Commandes disponibles
 
-- `/verifier-regles-md` : Audit de conformite Markdown
+### Skills principaux
+
+- `/review [fichier]` : Evalue un skill, PRD ou rule avec score /100, tableau de conformites et actions correctives. Grilles de notation integrees (PRD, Skill, Rule).
+- `/verifier-regles-md` : Audit de conformite Markdown complet
+
+### Autres commandes
+
 - `/init nom-du-projet` : Initialiser un nouveau projet dans `active/`
-- `./check-markdown-rules.sh` : Verification CLI rapide
+- `./check-markdown-rules.sh` : Verification CLI rapide (un fichier ou tout le workspace)
 
 ---
 
@@ -60,4 +66,4 @@ Adaptez ce fichier a votre contexte :
 
 ---
 
-**Version** : 1.0.0
+**Version** : 1.1.0

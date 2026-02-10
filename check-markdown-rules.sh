@@ -28,18 +28,26 @@ CONFORME_FILES=0
 # Créer fichier temporaire pour rapport
 REPORT_FILE=$(mktemp)
 
-echo -e "${YELLOW}[1/4] Scan des fichiers Markdown...${NC}"
-echo ""
+# Mode fichier unique (argument $1) ou scan complet
+if [ -n "${1:-}" ] && [ -f "$1" ]; then
+  SINGLE_FILE_MODE=true
+  MD_FILES="$1"
+  echo -e "${YELLOW}Verification de : $1${NC}"
+else
+  SINGLE_FILE_MODE=false
+  echo -e "${YELLOW}[1/4] Scan des fichiers Markdown...${NC}"
+  echo ""
 
-# Trouver tous les fichiers .MD et .md (exclure node_modules, .git, builds)
-MD_FILES=$(find "$WORKSPACE_DIR" \
-  -type f \( -name "*.MD" -o -name "*.md" \) \
-  ! -path "*/node_modules/*" \
-  ! -path "*/.git/*" \
-  ! -path "*/dist/*" \
-  ! -path "*/build/*" \
-  ! -path "*/.next/*" \
-  2>/dev/null)
+  # Trouver tous les fichiers .MD et .md (exclure node_modules, .git, builds)
+  MD_FILES=$(find "$WORKSPACE_DIR" \
+    -type f \( -name "*.MD" -o -name "*.md" \) \
+    ! -path "*/node_modules/*" \
+    ! -path "*/.git/*" \
+    ! -path "*/dist/*" \
+    ! -path "*/build/*" \
+    ! -path "*/.next/*" \
+    2>/dev/null)
+fi
 
 TOTAL_FILES=$(echo "$MD_FILES" | wc -l | tr -d ' ')
 echo -e "  ${GREEN}✓${NC} Fichiers trouvés: ${TOTAL_FILES}"
@@ -112,6 +120,20 @@ fi
 
 VIOLATIONS=$((VIOLATIONS + CAPS_VIOLATIONS))
 echo ""
+
+# Sortie compacte en mode fichier unique (pour hook PostToolUse)
+if [ "$SINGLE_FILE_MODE" = true ]; then
+  if [ "$VIOLATIONS" -eq 0 ]; then
+    echo "MD OK: $(basename "$1")"
+    rm -f "$REPORT_FILE"
+    exit 0
+  else
+    echo "MD: $VIOLATIONS violation(s) dans $(basename "$1")"
+    cat "$REPORT_FILE"
+    rm -f "$REPORT_FILE"
+    exit 1
+  fi
+fi
 
 echo -e "${YELLOW}[4/4] Génération du rapport...${NC}"
 echo ""

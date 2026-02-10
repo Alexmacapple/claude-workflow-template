@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "filepath=\"$TOOL_INPUT_FILE_PATH\"; if [ -n \"$filepath\" ] && echo \"$filepath\" | grep -q '\\.md$\\|\\.MD$'; then WORKSPACE=$(git rev-parse --show-toplevel 2>/dev/null); if [ -n \"$WORKSPACE\" ] && [ -f \"$WORKSPACE/check-markdown-rules.sh\" ]; then bash \"$WORKSPACE/check-markdown-rules.sh\" \"$filepath\"; fi; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
